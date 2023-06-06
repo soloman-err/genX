@@ -1,56 +1,48 @@
-import React from 'react';
+import { FaBars } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
+const navigators = [
+  { name: 'Home' },
+  { name: 'Marketplace' },
+  { name: 'Collection' },
+  { name: 'Creator' },
+  { name: 'Docs' },
+];
 
 const Navbar = () => {
   return (
     <>
-      <div className="navbar bg-base-100">
-        <div className="navbar-start">
+      <div className="navbar flex justify-between rounded-bl-2xl rounded-br-2xl shadow-xl bg-violet-800 text-white">
+        <div className="gap-2">
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
+            <label tabIndex={0} className="md:hidden">
+              <FaBars size={20} />
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 p-2 shadow-xl bg-violet-800 rounded-bo w-56 font-bold rounded-bl-xl rounded-br-xl"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+              {navigators.map((navitem, index) => (
+                <li key={index}>{navitem?.name}</li>
+              ))}
             </ul>
           </div>
-          <a className="normal-case text-xl">GENX</a>
+
+          <Link>
+            <span className="normal-case font-bold text-3xl tracking-widest">
+              GENX
+            </span>
+          </Link>
         </div>
-       
-        <div className="navbar-end">
-        <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+
+        <div className="hidden md:flex">
+          <ul
+            className="menu menu-horizontal font-bold px-1 text-lg uppercase gap-3
+          "
+          >
+            {navigators.map((navitem, index) => (
+              <li key={index}>{navitem?.name}</li>
+            ))}
           </ul>
         </div>
       </div>
